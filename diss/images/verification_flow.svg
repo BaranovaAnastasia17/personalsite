@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="930" height="190" viewBox="0 0 930 190" role="img" aria-labelledby="tt dd"><title id="tt">Workflow for graduation document verification</title><desc id="dd">Input XLSX and DOCX, normalise, apply checks, produce a report of discrepancies</desc>
+<rect width="930" height="190" fill="#f9fcfe" rx="12"/>
+<g font-family="Arial, sans-serif" fill="#234968" font-size="15" text-anchor="middle">
+<rect x="20" y="48" width="165" height="87" rx="13" fill="#eaf4f9" stroke="#88bad8" stroke-width="2"/><text x="102" y="79">Входные документы</text><text x="102" y="102" font-size="14">DOCX / XLSX</text>
+<rect x="205" y="48" width="165" height="87" rx="13" fill="#eaf4f9" stroke="#88bad8" stroke-width="2"/><text x="287" y="79">Извлечение</text><text x="287" y="102" font-size="14">и нормализация</text>
+<rect x="390" y="48" width="165" height="87" rx="13" fill="#eaf4f9" stroke="#88bad8" stroke-width="2"/><text x="472" y="79">Комплексная</text><text x="472" y="102" font-size="14">проверка</text>
+<rect x="575" y="48" width="165" height="87" rx="13" fill="#eaf4f9" stroke="#88bad8" stroke-width="2"/><text x="657" y="79">Выявление</text><text x="657" y="102" font-size="14">несоответствий</text>
+<rect x="760" y="48" width="150" height="87" rx="13" fill="#fff6e5" stroke="#d8b76b" stroke-width="2"/><text x="835" y="79">Отчёт и</text><text x="835" y="102" font-size="14">предупреждения</text>
+</g><g stroke="#739cb4" stroke-width="3" fill="none"><path d="M185 91H205 M370 91H390 M555 91H575 M740 91H760"/></g><g fill="#739cb4"><path d="M196 85l9 6-9 6z M381 85l9 6-9 6z M566 85l9 6-9 6z M751 85l9 6-9 6z"/></g></svg>

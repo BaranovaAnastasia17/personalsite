@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="DEVELOPMENT OF A MODULE FOR MINIMIZING DEAN’S OFFICE DOCUMENT WORKFLOW ERRORS WHEN PREPARING GRADUATION DOCUMENTS; full English translation of PM2026 paper." name="description"/>
+<title>Baranova A. E., Polupanov A. A. Developing a Module for Minimizing Errors in Graduation Documents - PM2026</title>
+<link href="../css/master_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body lang="en">
+<div id="topblock"><div id="langbox"><a href="author_pm2026.htm" lang="ru" title="Русская версия"><img alt="Русский" height="20" src="../images/ru.png" width="24"/></a></div>
+<div id="donntu"><a href="https://www.kubsu.ru/" rel="noopener" target="_blank">Kuban State University</a>   <a href="https://classroom.google.com/c/ODg1NTg5NDEzNDMw?cjc=hf6c5f5u" rel="noopener" target="_blank">Educational course</a></div></div>
+<div id="header"><div id="photomag"><a href="../baranova_big.jpg" title="View larger portrait"><img alt="Master’s student at Kuban State University, Anastasia Evgenyevna Baranova" height="240" src="../photo.jpg" width="180"/></a></div><div id="headertext">
+<h1>Anastasia Evgenyevna Baranova</h1><h3>Faculty of Computer Technologies and Applied Mathematics</h3><h3>Department of Information Technologies</h3><h3>Applied Mathematics and Computer Science (Master’s Programme)</h3><h2>Development of a Software Module for Detecting and Preventing Errors in the Preparation of Graduation Documents</h2><h3>Academic supervisor: Alexey Alexandrovich Polupanov</h3></div></div>
+<div id="middleblock"><div aria-label="Site sections" id="menu" role="navigation"><a class="button color" href="../indexe.htm">Resume</a>
+
+<a class="button color" href="../diss/indexe.htm">Abstract</a>
+
+
+
+</div>
+<main id="maintext">
+<h1>Publication in the PM2026 proceedings</h1>
+<p class="paper-source">A. E. Baranova, A. A. Polupanov. “Development of a Module for Minimizing Dean’s Office Document Workflow Errors when Preparing Graduation Documents.” Proceedings of the 8th All-Russian Scientific and Practical Conference of Young Researchers “Applied Mathematics: Contemporary Problems of Mathematics, Informatics and Modelling” (PM2026).</p>
+<p class="small-note">This page provides an English translation of the author's Russian paper. The <a href="author_pm2026.htm" lang="ru">original Russian text</a> is available on this site. The external link points to the <a href="https://pmcon.ru/" rel="noopener noreferrer" target="_blank">official PM2026 conference website</a>, not to an independently hosted copy of the article. The proceedings page numbers have not been supplied.</p>
+<article class="research-article" lang="en">
+<div class="article-header">
+<p class="article-udk">UDC 004.91+004.912</p>
+<h2 class="article-title">DEVELOPMENT OF A MODULE FOR MINIMIZING DEAN’S OFFICE DOCUMENT WORKFLOW ERRORS WHEN PREPARING GRADUATION DOCUMENTS</h2>
+<p class="article-authors">A. E. Baranova, A. A. Polupanov</p>
+<p class="article-affiliation">Kuban State University<br/>149 Stavropolskaya Street, Krasnodar 350040, Russia</p>
+<p><strong>Keywords:</strong> document workflow; graduation documents; diploma supplement; automation; XLSX; DOCX; semantic matching; Levenshtein distance.</p>
+<p><strong>Abstract.</strong> This paper presents a software module for automated generation of higher education diplomas and their supplements based on a consolidated academic record and a curriculum, represented by XLSX and DOCX files. The proposed workflow includes importing data, syntactic reconstruction of the academic record structure, and semantic matching of course names using Levenshtein distance.</p>
+</div>
+<p><strong>Introduction.</strong> The preparation and issuance of higher education diplomas and their supplements are governed by an established procedure which sets requirements for completing and recording these documents [1]. Software support for this process is important because graduation documents are often produced manually during bulk processing of heterogeneous data coming from multiple sources. Developing a tool for automated document preparation that reduces the likelihood of mistakes and the effort required to assemble graduation document sets is therefore a relevant scientific and practical problem.</p>
+<p><strong>Development and implementation of the software module.</strong> The module receives a consolidated record of graduates' academic performance (XLSX), a curriculum serving as the reference structure for the supplement (XLSX), and diploma and supplement templates (DOCX). An additional table of personal details, such as dates of birth or thesis titles, is used when the relevant fields are missing from the main record.</p>
+<p>Data are processed sequentially: the system imports data, reconstructs the table structure, matches course names, generates DOCX files, and saves the output (see Figure 1).</p>
+<figure class="site-figure paper-illustration"><img alt="Diploma-generation application's file-selection and field-entry interface" height="580" loading="eager" src="pm2026_interface.png" width="930"/><figcaption>Figure 1 – Data-entry interface</figcaption></figure>
+<p>The solution is implemented as a desktop application using JavaFX [2] for its graphical interface and Apache POI, including the XWPF and XSSF components [3], for DOCX/XLSX processing. Kotlin on the JVM provides compatibility with Java and makes it possible to use Apache POI. The chosen technology also includes null-safety mechanisms at the type-system level, useful when reading weakly typed tabular data [4].</p>
+<p>A major obstacle to automating educational documents is the considerable variation in XLSX spreadsheet structure. Columns may shift, service rows may be inserted, cells may be merged, and formulas and mixed data types may be used. These features reduce the reliability of processing methods based on fixed cell coordinates. To improve robustness, the module uses syntactic interpretation of table structure. Logical header and data regions are identified using stable textual and structural markers, while values are extracted with consideration of cell types. As a result, academic records are converted to a standardized internal representation that improves the reliability of subsequent processing.</p>
+<p>The key task in reconciling the data is to match course names recorded differently in examination records and curricula while preserving their semantic equivalence. The module uses a string similarity measure based on Levenshtein distance [5]. This distance is defined as the minimum number of character insertions, deletions and substitutions required to transform one string into another, regardless of string lengths. Before similarity is calculated, text values are normalized by converting them to a consistent case, standardizing whitespace, and harmonizing punctuation. This reduces the influence of superficial differences in course names. To make matching more reliable, the following normalized similarity measure is used (1).</p>
+<div aria-label="String similarity equals one minus Levenshtein distance divided by maximum string length" class="paper-formula" role="math"><span>Sim(s<sub>1</sub>, s<sub>2</sub>) = 1 − </span><span class="fraction"><span>D(m,n)</span><span>max(m,n)</span></span><span class="formula-number">(1)</span></div>
+<p class="formula-definition">where <i>s<sub>1</sub>, s<sub>2</sub></i> are the compared strings;<br/><i>m, n</i> are their respective lengths;<br/><i>D(m,n)</i> is the Levenshtein distance.</p>
+<p>A high similarity threshold, approximately 0.9 in the implementation, is then applied to minimize the risk of incorrectly merging distinct courses. Names that do not satisfy the threshold are automatically moved to the end of the course list in the generated diploma supplement for subsequent manual review.</p>
+<p>The final result is a collection of generated DOCX documents. For batch generation, files are saved in separate folders for each graduate, named after that student's full name. The module also preserves the state of sequential document numbering between runs in order to avoid assembly errors and duplicate documents.</p>
+<p><strong>Conclusion.</strong> The study produced a software module for automated preparation of diplomas and diploma supplements through the processing of XLSX spreadsheets and completion of DOCX templates. The proposed approach combines syntactic reconstruction of academic record structures with semantic matching of course names using a normalized string similarity measure based on Levenshtein distance and a strict acceptance threshold. This reduces the likelihood of transferring grades incorrectly, omitting courses, or introducing inconsistencies between curricula and academic records.</p>
+<h2>References</h2>
+<ol class="article-references">
+<li>Order of the Ministry of Science and Higher Education of the Russian Federation No. 670 of 27 July 2021 on preparing, recording, and issuing higher education qualification documents and supplements. <a href="http://publication.pravo.gov.ru/Document/View/0001202108250039" rel="noopener noreferrer" target="_blank">Official text</a> (accessed 13 March 2026).</li>
+<li>JavaFX (OpenJFX). Official documentation for the graphical user-interface platform. <a href="https://openjfx.io/" rel="noopener noreferrer" target="_blank">openjfx.io</a> (accessed 28 February 2026).</li>
+<li>Apache POI. Official documentation for DOCX (XWPF) and XLSX (XSSF). <a href="https://poi.apache.org/components/" rel="noopener noreferrer" target="_blank">poi.apache.org</a> (accessed 13 March 2026).</li>
+<li>Kotlin Documentation. Null safety. <a href="https://kotlinlang.org/docs/null-safety.html" rel="noopener noreferrer" target="_blank">kotlinlang.org</a> (accessed 28 February 2026).</li>
+<li>Levenshtein, V. I. Binary codes capable of correcting deletions, insertions, and reversals. Doklady AN SSSR, 1965, vol. 163, no. 4, pp. 845–848. <a href="https://www.mathnet.ru/rus/dan31411" rel="noopener noreferrer" target="_blank">mathnet.ru</a> (accessed 13 March 2026).</li>
+</ol>
+</article>
+<p class="backlink"><a href="indexe.htm">← Back to the digital library</a></p>
+</main></div>
+<div aria-label="Site sections" id="menub" role="navigation"><a class="mitemb" href="../indexe.htm">Resume</a>
+
+<a class="mitemb" href="../diss/indexe.htm">Abstract</a>
+
+
+
+</div>
+</body></html>

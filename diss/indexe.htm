@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Master’s Research Abstract. Anastasia Evgenyevna Baranova. Development of a Software Module for Detecting and Preventing Errors in the Preparation of Graduation Documents" name="description"/>
+<title>Master’s Research Abstract - Anastasia Evgenyevna Baranova</title>
+<link href="../css/master_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body lang="en">
+<div id="topblock"><div id="langbox"><a href="index.htm" lang="ru" title="Русская версия"><img alt="Русский" height="20" src="../images/ru.png" width="24"/></a></div>
+<div id="donntu"><a href="https://www.kubsu.ru/" rel="noopener" target="_blank">Kuban State University</a>   <a href="https://classroom.google.com/c/ODg1NTg5NDEzNDMw?cjc=hf6c5f5u" rel="noopener" target="_blank">Educational course</a></div></div>
+<div id="header"><div id="photomag"><a href="../baranova_big.jpg" title="View larger portrait"><img alt="Master’s student at Kuban State University, Anastasia Evgenyevna Baranova" height="240" src="../photo.jpg" width="180"/></a></div><div id="headertext">
+<h1>Anastasia Evgenyevna Baranova</h1><h3>Faculty of Computer Technologies and Applied Mathematics</h3><h3>Department of Information Technologies</h3><h3>Applied Mathematics and Computer Science (Master’s Programme)</h3><h2>Development of a Software Module for Detecting and Preventing Errors in the Preparation of Graduation Documents</h2><h3>Academic supervisor: Alexey Alexandrovich Polupanov</h3></div></div>
+<div id="middleblock"><div aria-label="Site sections" id="menu" role="navigation"><a class="button color" href="../indexe.htm">Resume</a>
+
+<a aria-current="page" class="button colorfix">Abstract</a>
+
+
+
+</div>
+<main id="maintext">
+<h1>Master’s Research Abstract</h1>
+<p class="page-intro">Development of a Software Module for Detecting and Preventing Errors in the Preparation of Graduation Documents</p>
+<h2>Introduction and motivation</h2>
+<p>Preparing graduation documents at a university requires data to be transferred among student registers, academic records, spreadsheets, text templates and final documents. Even when a document is technically well formed, the information inside it may be incomplete or inconsistent with its original source. This research addresses the detection and prevention of such errors in interconnected DOCX and XLSX files.</p>
+<p>The relevance of the topic lies in the need to check more than file syntax. The Office Open XML standards define document structures, but compliance with these structures alone does not guarantee the correctness of names, grades, academic programmes or other domain-specific information. Data quality methods can detect missing or inconsistent values, while document-specific rules are needed to interpret the requirements of the university workflow.</p>
+<h2>Research aim and objectives</h2>
+<p>The aim is to design, implement and experimentally evaluate a software module that combines structural validation, data quality controls, cross-document consistency checks and formalised domain rules. The object of the research is the process of preparing graduation documentation. Its subject is the methods and algorithms used to validate the structure and content of related electronic documents.</p>
+<p>The key objectives are to study the sources and types of common errors; analyse structural verification methods for DOCX and XLSX; formalise completeness, validity and consistency constraints; develop a mechanism for comparing repeated information across documents; implement a diagnostic module; and measure its effectiveness using a controlled test dataset.</p>
+<h2>Review of relevant approaches</h2>
+<p>The ECMA-376 standard [1] defines Office Open XML file formats. Microsoft's Open XML SDK [2] provides programmatic access to document parts and validation functionality in .NET applications. The WordprocessingML and SpreadsheetML documentation [3, 4] describes the internal organisation of text documents and spreadsheets. These sources provide a technical foundation for structural validation.</p>
+<p>Rule-based validation offers a way to express relationships that extend beyond the syntax of a document. Schematron, defined in ISO/IEC 19757-3 [6], supports assertions over XML data. In the context of graduation documents, similar rules can express the presence of mandatory fields and dependencies between records. However, the relevant rules must be developed for the specific university process and maintained when its regulations change.</p>
+<p>Research on data quality also highlights the significance of completeness and consistency. Wang and Strong [9] discuss quality as a multidimensional concept, while Cichy and Rass [10] survey data quality frameworks. The study of spreadsheet errors by Panko [7] and the detection of inter-worksheet problems by Hermans and co-authors [8] demonstrate the need to look beyond whether a file can be successfully opened.</p>
+<p>Tools such as python-docx [11] and openpyxl [12] can be used to inspect DOCX and XLSX content, although they do not by themselves replace complete schema validation. A combination of document parsers, rule engines and cross-document matching is therefore more suitable for this domain than reliance on a single generic method.</p>
+<h2>Proposed architecture and verification process</h2>
+<p>The proposed module consists of input file handling, data extraction, normalisation, validation and report generation. Normalisation is necessary because values may be stored in different textual forms, with differences in spaces, date formats or representations of the same academic attribute. After the data has been normalised, the module can check both individual records and relationships between documents.</p>
+<figure class="site-figure"><img alt="Graduation document verification workflow" height="190" src="images/verification_flow.svg" width="930"/><figcaption>Figure 1 - Proposed multi-stage verification workflow (labels are given in Russian)</figcaption></figure>
+<p>The validation rules should cover missing mandatory fields, invalid dates, inconsistent grades, incorrect identifiers, and disagreements between a source spreadsheet and the final word-processing document. Each detected issue should be recorded with a rule identifier, the affected files, the field involved and a description of the mismatch. Such reports can support human review and help improve the input data before printing the final document set.</p>
+<h2>Evaluation methodology</h2>
+<p>Evaluation requires a reference set of correct document packages and carefully modified copies containing known errors. Cases should be selected across document types, error categories and structural complexity. The most relevant metrics include Precision, Recall, F1 and processing time. Results for different error types should be reported separately, with particular attention to false warnings and the completeness of problem detection.</p>
+<p>The preliminary stage of the research has resulted in a structured problem statement, a set of proposed validation levels, a review of standards and data quality methods, and an outline of the evaluation process. Full implementation and experimental testing remain subsequent stages. Claims about performance or improved accuracy will be made only after measurements have been obtained.</p>
+<h2>Conclusion</h2>
+<p>Graduation document preparation involves both technical file correctness and semantic consistency of data across multiple documents. A combined verification approach is justified because neither schema validation nor generic data quality checks alone enforce all domain rules. The practical direction of the research is a modular, explainable and reproducible validation process that supports earlier detection of errors and reduces the burden of repetitive manual checking, subject to experimental confirmation.</p>
+<div class="local-note"><b>Note.</b> The master's project is still in progress. Its final implementation and measured performance may change as the investigation advances.</div>
+<h2>References</h2><ol><li id="ref1">Ecma International. ECMA-376: Office Open XML File Formats. <a href="https://ecma-international.org/publications-and-standards/standards/ecma-376/" rel="noopener" target="_blank">Source</a>.</li><li id="ref2">Microsoft. Open XML SDK. <a href="https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk" rel="noopener" target="_blank">Source</a>.</li><li id="ref3">Microsoft. Structure of a WordprocessingML document. <a href="https://learn.microsoft.com/en-us/office/open-xml/word/structure-of-a-wordprocessingml-document" rel="noopener" target="_blank">Source</a>.</li><li id="ref4">Microsoft. Structure of a SpreadsheetML document. <a href="https://learn.microsoft.com/en-us/office/open-xml/spreadsheet/structure-of-a-spreadsheetml-document" rel="noopener" target="_blank">Source</a>.</li><li id="ref5">Microsoft. How to validate a word processing document. <a href="https://learn.microsoft.com/en-us/office/open-xml/word/how-to-validate-a-word-processing-document" rel="noopener" target="_blank">Source</a>.</li><li id="ref6">ISO/IEC. ISO/IEC 19757-3: Rule-based validation using Schematron. <a href="https://www.iso.org/standard/85625.html" rel="noopener" target="_blank">Source</a>.</li><li id="ref7">Raymond R. Panko. What We Know About Spreadsheet Errors. <a href="https://doi.org/10.4018/joeuc.1998040102" rel="noopener" target="_blank">Source</a>.</li><li id="ref8">Felienne Hermans, Martin Pinzger, Arie van Deursen. Detecting and Visualizing Inter-Worksheet Smells in Spreadsheets. <a href="https://doi.org/10.1109/ICSE.2012.6227171" rel="noopener" target="_blank">Source</a>.</li><li id="ref9">Richard Y. Wang, Diane M. Strong. Beyond Accuracy: What Data Quality Means to Data Consumers. <a href="https://doi.org/10.1080/07421222.1996.11518099" rel="noopener" target="_blank">Source</a>.</li><li id="ref10">Christian Cichy, Stefan Rass. An Overview of Data Quality Frameworks. <a href="https://doi.org/10.1109/ACCESS.2019.2899751" rel="noopener" target="_blank">Source</a>.</li><li id="ref11">python-docx contributors. python-docx documentation. <a href="https://python-docx.readthedocs.io/en/latest/" rel="noopener" target="_blank">Source</a>.</li><li id="ref12">openpyxl contributors. openpyxl documentation. <a href="https://openpyxl.readthedocs.io/en/stable/" rel="noopener" target="_blank">Source</a>.</li></ol></main></div>
+<div aria-label="Site sections" id="menub" role="navigation"><a class="mitemb" href="../indexe.htm">Resume</a>
+
+<a class="mitemb" href="indexe.htm">Abstract</a>
+
+
+
+</div>
+</body></html>

@@ -1,0 +1,96 @@
+
+/* Careful adaptation of the original Ivanov student site: same three blocks,
+   photo, horizontal navigation, resume table, and document hierarchy. */
+:root { --ink:#243448; --main:#234f75; --border:#d1dee8; --tint:#ecf4f8; --highlight:#d9ecf6; --cream:#fff7df; }
+html {scroll-behavior:smooth;}
+body { max-width: 1200px; margin: 12px auto 24px; padding:0 12px; box-sizing:border-box; background:#f7fafc; color:var(--ink); }
+#topblock {background:#edf4f7; border:1px solid var(--border); border-radius:12px 12px 0 0; min-height:39px;}
+#topblock:after, #header:after, #middleblock:after {content:"";display:block;clear:both;}
+#donntu a { color:var(--main); text-decoration:none; font-size:13px; }
+#donntu a:hover{text-decoration:underline;}
+#header {background:#fff; border-left:1px solid var(--border); border-right:1px solid var(--border); padding:12px 12px 4px; min-height:245px;}
+#header h1 {color:var(--main);font-size:22px;line-height:1.2;}
+#header h2 {font-size:17px;line-height:1.25;color:var(--main); margin-top:4px;}
+#header h3 {font-size:15px;color:#3c5771;line-height:1.22;padding-bottom:7px;}
+#photomag {padding:4px 19px 4px 4px;}
+#photomag img { width:180px;height:240px;object-fit:cover;object-position:center; border-radius:10px;box-shadow:0 2px 12px rgba(29,64,102,.15);}
+#middleblock{background:#fff; border-left:1px solid var(--border); border-right:1px solid var(--border);}
+#menu{background:#e8f0f5;border-bottom:1px solid var(--border);padding:12px 8px 10px; text-align:center;}
+#maintext{padding:16px 24px 24px;line-height:1.5;}
+#maintext h1 {color:var(--main); margin:7px 0 17px;font-family:Georgia,'Times New Roman',serif;line-height:1.25;}
+#maintext h2 {color:var(--main);text-indent:0;margin:26px 0 10px; font-family:Georgia,'Times New Roman',serif;}
+#maintext h3 {color:#315c80;text-indent:0;margin:21px 0 9px;}
+#maintext p {font-size:17px;line-height:1.58;padding:4px 5px 7px;text-align:justify;text-indent:0;}
+#maintext ul,#maintext ol{margin:8px 15px 13px 13px;}
+#maintext li{font-size:17px;line-height:1.55;padding-bottom:6px;}
+#maintext a {font-family:inherit;font-size:inherit;color:#125b91;overflow-wrap:anywhere;}
+#maintext a:focus-visible, .button:focus-visible {outline:3px solid #286d9f;outline-offset:2px;}
+#menu .button{width:auto;font:15px/1.1 Georgia,serif;border-radius:10px;padding:10px 12px;margin:3px 3px;box-shadow:0 1px 4px rgba(24,71,110,.1);text-shadow:none;}
+#menu .color {color:var(--main);background:linear-gradient(#fff,#cee3ef);border:1px solid #89b5d0;}
+#menu .colorfix{color:#5e4911;background:linear-gradient(#fff9dc,#ffe49d);border:1px solid #d8b665;cursor:default;}
+#menub {background:#e9f1f6;border:1px solid var(--border);border-radius:0 0 12px 12px;padding:17px 8px;}
+#menub a {text-decoration:none;display:inline-block;font:14px Georgia,serif;color:#245b81;margin:0 9px 6px;}
+#menub a:hover{text-decoration:underline;}
+#maintext table#resume {width:96%;margin:10px auto 18px; border-collapse:collapse;}
+#maintext table#resume td {padding:10px 12px;font:16px/1.44 Georgia,'Times New Roman',serif;vertical-align:top;}
+#maintext table#resume td.c1{color:#315878;font-weight:600;text-align:right;width:27%;}
+#maintext table#resume td.c2{width:73%;}
+#maintext table#resume tr.odd{background:#edf4f8;}
+#maintext table#resume tr.even{background:#fff;}
+#maintext table#resume tr:hover{background:#e4f1f7;}
+.page-intro{font-size:17px;color:#45637a;text-align:center!important; margin-top:-4px;}
+.local-note{background:#f2f7fb;border-left:4px solid #8dbedc;padding:13px 15px;border-radius:8px;margin:17px 12px;line-height:1.48;font-size:15px;}
+.small-note{font-size:14px;color:#566879;margin:8px 6px 16px;}
+.author-link {background:#f8fbfd;border:1px solid #d9e6ef;border-radius:12px;padding:14px 17px;margin:11px 6px;}
+.author-link h3{margin:2px 0 5px !important;}
+.author-link p {font-size:16px!important;margin:0;padding:3px!important;}
+.author-link .source {font-size:14px;color:#6a7380;}
+.source-table {border-collapse:collapse;width:98%;margin:16px auto;font:15px/1.35 Georgia,'Times New Roman',serif;}
+.source-table th {background:#dcebf5;color:#254d70;text-align:left;}
+.source-table th,.source-table td{border:1px solid #cbdce7;padding:8px 10px;vertical-align:top;}
+.source-table tr:nth-child(even){background:#f3f8fb;}
+.source-table .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.source-table a{font-size:14px!important;}
+.site-figure{margin:18px 7px;text-align:center;}
+.site-figure img{max-width:100%;height:auto;border:1px solid #d6e3ec;border-radius:10px;background:#fff;}
+.site-figure figcaption {font:italic 14px/1.4 Georgia,serif;color:#52687b;margin:7px 2px;}
+.contents{background:#eff6fa;border:1px solid #dceaf2;border-radius:10px;padding:12px 16px;margin:14px 8px;}
+.contents a{display:block;padding:5px 2px;}
+.two-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:17px 4px;}
+.fact-card{border:1px solid #d4e3eb;border-radius:12px;padding:14px;background:#fafcfd;}
+.fact-card strong{color:var(--main);}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin:9px 0 20px;}
+.skill-tags span{display:inline-block;padding:6px 12px;border:1px solid #c9dce8;border-radius:18px;background:#eff6fa;font:15px Georgia,serif;color:#254d70;}
+.backlink{text-align:right!important;margin-top:20px;font-size:14px!important;}
+@media (max-width:720px){body{margin:0;padding:0}#topblock{border-radius:0}#header{min-height:auto; padding:12px}#photomag{float:none;width:auto;margin:auto;text-align:center;padding:3px}#headertext{text-align:center;padding:4px}#header h1{text-align:center;font-size:21px}#header h2{text-align:center}#maintext{padding:18px 11px}#maintext p{font-size:16px}#menu{padding:9px}#menu .button{font-size:14px;padding:9px 10px}#maintext table#resume{width:100%}#maintext table#resume td{display:block;width:100%!important;box-sizing:border-box;padding:6px 10px}#maintext table#resume td.c1{text-align:left}#maintext li{font-size:16px}.two-columns{grid-template-columns:1fr}.source-table{font-size:12px}.source-table td,.source-table th{padding:5px}.source-table a{font-size:12px!important}}
+
+/* PM2026 full article and two-date search table */
+.research-article {font-family:Georgia,'Times New Roman',serif;max-width:980px;margin:18px auto 24px;}
+.research-article .article-header {border-top:1px solid #ccdce8;border-bottom:1px solid #ccdce8;padding:14px 0 10px;margin:12px 0 22px;}
+#maintext .research-article .article-title {text-align:center;color:#244e70;text-transform:uppercase;line-height:1.45;font-size:21px;margin:13px 12px;}
+#maintext .research-article .article-header p {text-align:center;text-indent:0;margin:4px;line-height:1.5;}
+#maintext .research-article .article-header p.article-udk{text-align:left;font-size:14px;}
+#maintext .research-article .article-header p.article-authors {font-weight:bold;}
+#maintext .research-article .article-header p:last-child{text-align:justify;margin-top:10px;}
+#maintext .research-article p{margin:4px 0 9px;line-height:1.65;text-align:justify;}
+.paper-source{font-size:16px!important;line-height:1.6;}
+#maintext .research-article h2{font-size:21px;margin:23px 0 10px;}
+.paper-illustration img{max-width:98%;width:100%;height:auto;object-fit:contain;}
+.paper-formula{display:flex;align-items:center;justify-content:center;gap:12px;margin:24px 12px 16px;font:italic 24px Georgia,serif;flex-wrap:wrap;}
+.paper-formula .fraction{display:inline-flex;flex-direction:column;text-align:center;line-height:1.22;vertical-align:middle;font-size:22px;min-width:115px;}
+.paper-formula .fraction span:first-child{border-bottom:1px solid #243448;padding:0 6px 5px;}
+.paper-formula .fraction span:last-child{padding:4px 6px 0;}
+.paper-formula .formula-number{font:normal 17px Georgia,serif;margin-left:18px;}
+#maintext .research-article p.formula-definition{padding-left:28px;}
+.article-references{padding-left:27px;overflow-wrap:anywhere;}
+.article-references li{font-size:15px!important;line-height:1.5!important;padding:4px 0!important;}
+.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:9px;border:1px solid #d2e1e9;margin:14px 0;}
+#maintext table.search-results{margin:0;width:100%;min-width:860px;border:none;}
+.search-results caption{caption-side:top;text-align:left;font:bold 17px Georgia,serif;padding:12px 11px;color:#244e70;background:#eff5f9;}
+.search-results td.search-phrase{min-width:300px;overflow-wrap:normal;word-break:normal;line-height:1.4;}
+.search-results th:nth-child(1),.search-results td:nth-child(1){min-width:75px;}
+.search-results th:nth-child(5),.search-results th:nth-child(6){min-width:105px;white-space:nowrap;}
+@media(max-width:720px){#maintext .research-article .article-title{font-size:19px}.paper-formula{font-size:20px}.paper-formula .fraction{font-size:18px}.table-scroll{margin:10px 0}}
+
+/* Единая нейтральная окраска числовых данных без сравнения цветом. */
+.search-results td.num{color:inherit!important;font-weight:normal!important;}
